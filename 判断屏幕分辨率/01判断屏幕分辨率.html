@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>判断屏幕分辨率</title>
+    <script>
+        function client() {
+            if (window.innerWidth) { //新版本浏览器
+                return {
+                    width: window.innerWidth,
+                    height: window.innerHeight
+                };
+            } else if (document.compatMode === "CSS1Compat") { //标准浏览器
+                return {
+                    width: document.documentElement.clientWidth,
+                    height: document.documentElement.clientHeight
+                };
+            };
+            return { //以上2种都不符合 那只能是怪异模式的浏览器
+                width: document.body.clientWidth,
+                height: document.body.clientHeight
+            };
+        };
+
+        console.log(client().width);
+        console.log(client().height);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
